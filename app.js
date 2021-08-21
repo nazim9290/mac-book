@@ -1,9 +1,9 @@
 //commonfunction
 function updatePrice(product, price) {
     var commonId = document
-        .getElementById(product);
-    commonId.innerText = price;
-    totalUpdate();
+        .getElementById(product).innerText = price;
+    return commonId;
+    totalUpdate()
 }
 
 
@@ -74,27 +74,20 @@ function getPrice(productprice) {
     return priceValue;
 
 }
+
 //Total Update
 function totalUpdate() {
-    var memoriPrice = getPrice(
-        "memory");
-    var storagePrice = getPrice(
-        "storage");
-    var shippingPrice = getPrice(
-        "charge");
 
     var subTotal = getPrice("subtotal");
     var totalPrice = getPrice("total");
 
-    var subTotalValue = subTotal +
-        memoriPrice +
-        storagePrice + shippingPrice;
+    var subTotalValue = subTotal + memo;
     document.getElementById("subtotal")
         .innerText = subTotalValue;
 
-    var totalValue = totalPrice +
-        memoriPrice +
-        storagePrice + shippingPrice;
+
+
+    var totalValue = totalPrice;
     document.getElementById("total")
         .innerText = totalValue;
 }
