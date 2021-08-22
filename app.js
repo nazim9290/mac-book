@@ -2,6 +2,7 @@
 function updatePrice(product, price) {
     var commonId = document
         .getElementById(product).innerText = price;
+
     totalUpdate()
 }
 
@@ -65,37 +66,33 @@ entryShip.addEventListener("click",
     }
 )
 //get value
-function getPrice(productprice) {
-    let price = document
-        .getElementById(productprice);
-    var priceValue = parseInt(price
-        .innerText);
-    return priceValue;
+function getPrice() {
+    var memoriId = document
+        .getElementById("memory").innerText;
+    var memoriPrice = parseInt(memoriId);
+    var storageId = document
+        .getElementById("storage").innerText;
+    var storagePrice = parseInt(storageId);
+    var chargeId = document
+        .getElementById("charge").innerText;
+    var chargePrice = parseInt(chargeId);
 
+    let extraPrice = memoriPrice + storagePrice + chargePrice;
+    console.log(extraPrice)
+    return extraPrice
 }
 
 //Total Update
 function totalUpdate() {
-    var subTotal = getPrice("subtotal");
-    var totalPrice = getPrice("total");
 
-    var memoriPrice = getPrice(
-        "memory");
-    var storagePrice = getPrice(
-        "storage");
+    var subTotal = getPrice() + 1299;
 
-    var shippingPrice = getPrice(
-        "charge");
-
-
-    var subTotalValue = subTotal + memoriPrice + shippingPrice;
     document.getElementById("subtotal")
-        .innerText = subTotalValue;
+        .innerText = subTotal;
 
-
-    var totalValue = totalPrice;
     document.getElementById("total")
-        .innerText = subTotalValue;
+        .innerText = subTotal;
+    return subTotal;
 }
 
 //promotion
@@ -105,11 +102,11 @@ function applyPromo() {
         "promo-code");
     var inputValue = input.value;
 
-    var subtotal1 = getPrice(
-        "subtotal");
+    var subtotal = totalUpdate();
+    console.log(subtotal)
     if (inputValue == promoCode) {
-        var totalPromoValue = subtotal1 - (
-            subtotal1 * 20 / 100);
+        var totalPromoValue = subtotal - (
+            subtotal * 20 / 100);
 
         document.getElementById("total")
             .innerText = totalPromoValue;
